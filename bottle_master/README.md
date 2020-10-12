@@ -1,8 +1,8 @@
 # bottle_masterを管理するディレクトリ
-1. bottle_masterをcsvファイルで作成
+## 1. bottle_masterをcsvファイルで作成
   - make_bottle_master.ipynb　を実行し、csvファイルを作成
 
-2. bottle_nameとpriceの辞書を取得
+## 2. bottle_nameとpriceの辞書を取得
   - dive_groupwork直下のpythonファイルのモジュールとして機能
   - how to use
     ```
@@ -14,7 +14,7 @@
     ```
 
 
-3. 学習時に使用するbottle_image.jpgが保存されているディレクトリのパスリストとラベルを取得
+## 3. 学習時に使用するbottle_image.jpgが保存されているディレクトリのパスリストとラベルを取得
   - dive_groupwork直下のpythonファイルのモジュールとして機能
   - how to use
     ```
