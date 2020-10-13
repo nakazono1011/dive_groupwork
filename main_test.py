@@ -17,7 +17,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='model_path')
 parser.add_argument('--model_path', default=None, help="path to saved_model")
-parser.add_argument('--debug_without_model', default=False, help="not_predict")
+parser.add_argument('--debug_without_model', default=None, help="not_predict")
 
 # def shutter():
 #     photofile = open(photo_filename, 'wb')
@@ -38,15 +38,18 @@ if __name__ == '__main__':
         print('--model_pathを指定してください')
     else:
         #画像を保存するディレクトリを作成
-        os.makedirs('check_image', exist_ok)
+        os.makedirs('check_image', exist_ok=True)
         # モデル+重みを読込み
-        self_model = load_model(args.model_path)
+        if args.debug_without_model is None:
+            self_model = load_model(args.model_path)
+        else:
+            self_model = 0
 
         #商品価格
         name_price_dict = bottle_master.bottle_master_dict()
-        _, label_dict = bottle_master.get_bottle_label_dirpath()
+        _, label_dict = bottle_master.bottle_label_dirpath()
         bottle_label = {}
-        for key, value in label_dict:
+        for key, value in label_dict.items():
             bottle_label[value] = key
 
         # 音声ファイル初期化
@@ -82,7 +85,7 @@ if __name__ == '__main__':
                 img_array = img_array.astype('float32')/255.0
                 img_array = img_array.reshape((1,224,224,3))
 
-                if args.debug_without_model is False:
+                if self_model == 0:
                     print('商品が読み取られました')
                     print('array_shape : {}'.format(img_array.shape))
                     key = input('読み取られた商品が正しい場合は「y」、誤っていた場合は「n」を押してください')
@@ -92,6 +95,7 @@ if __name__ == '__main__':
                         key = input('続けて商品をスキャンする場合は「y」,会計する場合は「Enter」を押して下さい')
                         if key != 'y':
                             print('合計 : {}'.format(money_sum))
+                            print("Thank you for your purchase!!")
                             break
                     elif key == 'n':
                         print('商品を指定の位置に置き直してください')
@@ -108,6 +112,7 @@ if __name__ == '__main__':
                         key = input('続けて商品をスキャンする場合は「y」,会計する場合は「Enter」を押して下さい')
                         if key != 'y':
                             print('合計 : {}'.format(money_sum))
+                            print("Thank you for your purchase!!")
                             break
                     elif key == 'n':
                         print('商品を指定の位置に置き直してください')

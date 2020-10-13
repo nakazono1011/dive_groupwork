@@ -16,7 +16,7 @@ def bottle_master_dict():
     return bottle_master_dict
 
 # 学習データが格納されているディレクトリのパスとラベルの辞書を取得する
-def bottle_label_dirpapth():
+def bottle_label_dirpath():
     data_dir_path = []
     label_dict = {}
     label = 0
