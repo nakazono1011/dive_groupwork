@@ -13,6 +13,7 @@ import picamera
 from PIL import Image
 from time import sleep
 
+
 def shutter(save_path):
     # pi camera 用のライブラリーを使用して、画像を取得
     # 音声再生
@@ -54,6 +55,6 @@ def main():
             if key == 'n':
                 print("写真撮影を終了しました")
                 break
-            
+
 if __name__ == '__main__':
     main()
