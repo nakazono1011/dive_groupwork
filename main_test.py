@@ -9,8 +9,8 @@ import picamera
 from PIL import Image
 from time import sleep
 
-from bottle_master.bottle_master import bottle_master_dict, get_bottle_label_dirpath
-from shutter2image.shutter2image import shutter
+from bottle_master import bottle_master
+from shutter2image import shutter2image
 import os
 import datetime
 import argparse
@@ -43,8 +43,8 @@ if __name__ == '__main__':
         self_model = load_model(args.model_path)
 
         #商品価格
-        name_price_dict = bottle_master_dict()
-        _, label_dict = get_bottle_label_dirpath()
+        name_price_dict = bottle_master.bottle_master_dict()
+        _, label_dict = bottle_master.get_bottle_label_dirpath()
         bottle_label = {}
         for key, value in label_dict:
             bottle_label[value] = key
@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 file_name = 'check' + '_' + dt_now.strftime('%Y%m%d%H%M%S') + '.jpg'
                 save_path = os.path.join('check_image', file_name)
                 # 写真撮影
-                shutter(save_path)
+                shutter2image.shutter(save_path)
 
                 # # 音声再生
                 # pygame.mixer.music.play(1)
