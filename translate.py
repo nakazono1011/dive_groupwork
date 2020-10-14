@@ -147,21 +147,3 @@ def translate_language(lang, scene, debug=False):
     sentense = lang_dict[scene]
 
     return sentense
-
-if __name__ == '__main__':
-
-  lang ="j"
-  scene = "welcome"
-
-  #lang ="e"
-  #scene = "time"
-
-  test = transrate_language(lang, scene)
-  input(test)
-
-language = "j"
-scene = "thanks"
-t = 10
-
-input(transrate_language(language, scene))
-
