@@ -45,7 +45,7 @@ def translate_language(lang, scene, debug=False):
          "read_message" : 'Soma Ikintu: {} Igiciro: {}',
          "time" : '{}[s] yararenganye kugeza igihe ikintu gisomwe.',
          "correct?" : 'Kanda "y" niba ikintu cyasomwe ari cyo, cyangwa "n" niba atari byo. : ',
-         "continue?" : 'Kanda "y" kugirango ukomeze gusikana ibintu byose, "Injira" kugirango urebe, cyangwa "x" niba ufite ibintu byo guhagarika. : ',
+         "continue?" : 'Kanda "y" kugirango ukomeze gusikana ibintu byose, "f" kugirango urebe, cyangwa "x" niba ufite ibintu byo guhagarika. : ',
          "cancel" : 'Injiza umubare wibicuruzwa ushaka guhagarika. : ',
          "total" : 'Igiciro-cyose: {}',
          "subtotal" : 'Subtotal : {}',
@@ -60,7 +60,7 @@ def translate_language(lang, scene, debug=False):
          "read_message" : 'Read an Item : {} Price : {}',
          "time" : '{}[s] has passed until the item is read.',
          "correct?" : 'Press "y" if the item read is correct, or "n" if it is incorrect. : ',
-         "continue?" : 'Press "y" to continue scanning any items, "Enter" to check out, or "x" if you have items to cancel. : ',
+         "continue?" : 'Press "y" to continue scanning any items, "f" to check out, or "x" if you have items to cancel. : ',
          "cancel" : 'Enter the number of the product you want to cancel. : ',
          "total" : 'Total-Price: {}',
          "subtotal" : 'Subtotal : {}',
@@ -74,8 +74,8 @@ def translate_language(lang, scene, debug=False):
          "scan_start" : 'Pour numériser le produit, placez-le dans la position souhaitée et appuyez sur «Entrée».',
          "read_message" : 'Lire un article: {} Prix: {}',
          "time" : "{}[s] est passé jusqu'à ce que l'élément soit lu.",
-         "correct?" : "Appuyez sur «y» si l'élément lu est correct, ou «n» s'il est incorrect. : ",
-         "continue?" : 'Appuyez sur «y» pour continuer la numérisation des éléments, sur «Entrée» pour vérifier ou sur «x» si vous avez des éléments à annuler. : ',
+         "correct?" : "Appuyez sur 'y' si l'élément lu est correct, ou 'n' s'il est incorrect. : ",
+         "continue?" : "Appuyez sur 'y' pour continuer la numérisation des éléments, sur 'f' pour vérifier ou sur 'x' si vous avez des éléments à annuler. : ",
          "cancel" : 'Saisissez le numéro du produit que vous souhaitez annuler.: ',
          "total" : 'Prix-total: {}',
          "subtotal" : 'Sous-total : {}',
@@ -148,20 +148,7 @@ def translate_language(lang, scene, debug=False):
 
     return sentense
 
-if __name__ == '__main__':
 
-  lang ="j"
-  scene = "welcome"
 
-  #lang ="e"
-  #scene = "time"
 
-  test = transrate_language(lang, scene)
-  input(test)
-
-language = "j"
-scene = "thanks"
-t = 10
-
-input(transrate_language(language, scene))
 
