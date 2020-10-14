@@ -110,11 +110,11 @@ if __name__ == '__main__':
                         time_end = perf_counter()
                         # 商品を読み取るまで {}[s] 経過しました
                         scene = "time"
-                        print(translate_language(language, scene))
+                        print(translate_language(language, scene).format(time_end-time_start))
                         
                         # 商品 : not predict が読み取られました
                         scene = "read_message"
-                        print(translate_language(language, scene))
+                        print(translate_language(language, scene).format(img_array.shape))
                         
                         print('img_array_shape : {}'.format(img_array.shape))
 
@@ -172,11 +172,11 @@ if __name__ == '__main__':
                         time_end = perf_counter()
                         # 商品を読み取るまで {}[s] 経過しました
                         scene = "time"
-                        print(translate_language(language, scene))
+                        print(translate_language(language, scene).format(time_end-time_start))
 
-                        # 商品 : not predict が読み取られました
+                        # 商品 : {} 値段 : {} が読み取られました'
                         scene = "read_message"
-                        print(translate_language(language, scene))
+                        print(translate_language(language, scene).format(name, name_price_dict[name]))
 
                         while True:
                             # 読み取られた商品が正しい場合は「y」、誤っていた場合は「n」を押してください
