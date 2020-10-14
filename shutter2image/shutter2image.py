@@ -18,7 +18,7 @@ def shutter(save_path):
     # pi camera 用のライブラリーを使用して、画像を取得
     # 音声再生
     path = os.getcwd()
-    sound_path = os.path.join(path, "./Camera-Phone03-5.mp3")
+    sound_path = os.path.join(path, "shutter2image/Camera-Phone03-5.mp3")
     pygame.mixer.init(frequency = 44100)    # 初期設定
     pygame.mixer.music.load(sound_path)
     pygame.mixer.music.play(1)

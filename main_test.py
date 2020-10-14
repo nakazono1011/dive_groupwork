@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
                     # 写真撮影してjpgをディレクトリへ保管
                     # ローカルデバッグ
-                    # shutter2image.shutter(save_path)
+                    shutter2image.shutter(save_path)
 
                     # # 音声再生
                     # pygame.mixer.music.play(1)
