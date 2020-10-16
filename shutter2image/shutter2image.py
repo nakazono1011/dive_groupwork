@@ -10,12 +10,12 @@ parser.add_argument('--bottle_name', default=None, help="path to bottle_name")
 import pygame.mixer
 import numpy as np
 import picamera
+import picamera.array
 from PIL import Image
 from time import sleep
 
-
+#　jpgファイルで保存するバージョン
 def shutter(save_path):
-    # pi camera 用のライブラリーを使用して、画像を取得
     # 音声再生
     path = os.getcwd()
     sound_path = os.path.join(path, "shutter2image/Camera-Phone03-5.mp3")
@@ -25,12 +25,41 @@ def shutter(save_path):
     sleep(1)
     # 再生の終了
     pygame.mixer.music.stop()
+
+    # pi camera 用のライブラリーを使用して、画像を取得
     with picamera.PiCamera() as camera:
         #camera.resolution = (640,480)
         camera.resolution = (300,400)
         camera.start_preview()
         sleep(1.000)
         camera.capture(save_path)
+
+# arrayで返す
+def shutter_array():
+    # 音声再生
+    path = os.getcwd()
+    sound_path = os.path.join(path, "shutter2image/Camera-Phone03-5.mp3")
+    pygame.mixer.init(frequency = 44100)    # 初期設定
+    pygame.mixer.music.load(sound_path)
+    pygame.mixer.music.play(1)
+    sleep(1)
+    # 再生の終了
+    pygame.mixer.music.stop()
+
+    # pi camera 用のライブラリーを使用して、画像を取得
+    with picamera.PiCamera() as camera:
+        #camera.resolution = (640,480)
+        camera.resolution = (300,400)
+        # jpg保管の場合、初期バージョン
+        # camera.start_preview()
+        # sleep(1.000)
+        # camera.capture(save_path)
+
+        # RGBの配列を作成、バージョン2
+        # https://picamera.readthedocs.io/en/release-1.10/api_array.html
+        with picamera.array.PiRGBArray(camera) as output:
+            image_array = output.img_array
+    return image_array
 
 import datetime
 
