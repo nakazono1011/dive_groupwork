@@ -1,6 +1,45 @@
 
 import os
 import csv
+import pandas as pd
+import time
+import datetime
+from pandasql import sqldf
+
+# bottle_masterを読み込みをDataFrame型で取得する
+def bottle_master_df():
+    # csvファイルを読み込む
+    cwd_path = os.getcwd()
+    file_path = os.path.join(cwd_path, 'bottle_master/bottle_master.csv')
+    bottle_master_df = pd.read_csv(file_path)
+    
+    #日付型に変換
+    bottle_master_df["revisiondate"] = pd.to_datetime(bottle_master_df["revisiondate"])
+
+    #Sqlクエリを定義
+    q = """
+        SELECT  main.id
+            ,main.revisiondate
+            ,main.name
+            ,main.price
+        FROM bottle_master_df as main
+        INNER JOIN
+            (
+                SELECT  id
+                        ,MAX(revisiondate) as revisiondate
+                FROM bottle_master_df
+                WHERE revisiondate <= "{}"
+                GROUP BY id
+            ) as sub
+        ON  main.id = sub.id
+        AND main.revisiondate = sub.revisiondate
+        """
+    
+    #サーバー日付を取得
+    today = pd.to_datetime(datetime.date.today())
+
+    bottle_master_df = sqldf(q.format(today), locals())
+    return bottle_master_df
 
 # bottle_masterを読み込みを辞書型を取得する
 def bottle_master_dict():
@@ -10,8 +49,8 @@ def bottle_master_dict():
     file_path = os.path.join(cwd_path, 'bottle_master/bottle_master.csv')
     with open(file_path, 'r') as f:
         reader = csv.reader(f)
-        for bottle_name, price in reader:
-            bottle_master_dict[bottle_name] = int(price)
+        for idx, bottle_name, price in reader:
+            bottle_master_dict[idx] = [bottle_name, int(price)]
 
     return bottle_master_dict
 
