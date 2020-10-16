@@ -58,7 +58,8 @@ def shutter_array():
         # RGBの配列を作成、バージョン2
         # https://picamera.readthedocs.io/en/release-1.10/api_array.html
         with picamera.array.PiRGBArray(camera) as output:
-            image_array = output.img_array
+            camera.capture(output, 'rgb')
+            image_array = output.array
     return image_array
 
 import datetime
