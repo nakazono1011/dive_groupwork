@@ -3,11 +3,10 @@ id,revisiondate,name,price
 0,2020/10/1,cola,120
 1,1900/1/1,namacha,200
 1,2020/12/1,sin_namacha,220
-2,1900/1/1,calpis,150
+2,1900/1/1,hojicha,150
 3,1900/1/1,gogotea,130
 4,1900/1/1,pocari,140
 5,1900/1/1,cola_l,150
 6,1900/1/1,namacha_l,250
-7,1900/1/1,calpis_l,200
-8,1900/1/1,gogotea_l,180
-9,1900/1/1,pocari_l,190
+7,1900/1/1,gogotea_l,180
+8,1900/1/1,pocari_l,190
