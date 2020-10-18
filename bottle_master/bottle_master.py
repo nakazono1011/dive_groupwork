@@ -7,10 +7,16 @@ import datetime
 from pandasql import sqldf
 
 # bottle_masterを読み込みをDataFrame型で取得する
-def bottle_master_df():
+def bottle_master_df(model):
     # csvファイルを読み込む
     cwd_path = os.getcwd()
-    file_path = os.path.join(cwd_path, 'bottle_master/bottle_master.csv')
+    
+    # modelに応じて読むファイル変える
+    if model == "YOLO":
+        file_path = os.path.join(cwd_path, 'bottle_master/bottle_master.csv')
+    elif model == "EFF":
+        file_path = os.path.join(cwd_path, 'bottle_master/bottle_master_eff.csv')
+        
     bottle_master_df = pd.read_csv(file_path)
     
     #日付型に変換
